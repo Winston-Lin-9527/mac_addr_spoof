@@ -10,6 +10,8 @@
 #!/bin/bash
 REAL_MAC_ADDR_FILE="/tmp/real_mac_addr.conf"
 CUR_MAC=$(ifconfig en0 | grep ether | cut -c 8-)
+HELP="Usage: $0 show/go/help \n\n show: print the current spoofing status and current MAC address. \n\n go: turn on/off the spoofing. \n\n help: print this message."
+
 
 if [ -f $REAL_MAC_ADDR_FILE ]; then 
     REAL_MAC_ADDR=$(cat $REAL_MAC_ADDR_FILE)
@@ -19,7 +21,7 @@ else
 fi 
 
 if [ $# -lt 1 ]; then 
-    echo "Usage : $0 show/go/help"
+    echo $HELP 
     exit 0
 fi
 
@@ -42,5 +44,5 @@ elif [ "$1" == "go" ]; then
     sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -z
     sudo ifconfig en0 lladdr $MAC_TO_SET
 else
-    echo "Usage : $0 show/go/help"
+    echo $HELP 
 fi 
