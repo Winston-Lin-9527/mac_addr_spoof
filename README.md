@@ -10,7 +10,8 @@ Note: You can always reboot your Mac and everything will be reset
 
 ## Usage
 Usage: $0 show/go/help
-    show: print the current spoofing     status and current MAC address.
+    
+    show: print the current spoofing status and current MAC address.
 
     go: turn on/off the spoofing.   
 
